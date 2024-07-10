@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <RootNamespace>Phasmo_Savefile_Editor</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>True</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>notes.ico</ApplicationIcon>
+    <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+    <BaseOutputPath>C:\Users\NeonFox\source\repos\Phasmo Savefile Editor\Phasmo Savefile Editor\Bin</BaseOutputPath>
+    <_SuppressWinFormsTrimError>True</_SuppressWinFormsTrimError>
+    <JsonSerializerIsReflectionEnabledByDefault>True</JsonSerializerIsReflectionEnabledByDefault>
+    <TrimMode>Partial</TrimMode>
+    <PublishReadyToRun>True</PublishReadyToRun>
+    <PublishSingleFile>True</PublishSingleFile>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>True</Optimize>
+    <IsPublishable>True</IsPublishable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>True</Optimize>
+    <IsPublishable>True</IsPublishable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="notes.ico" />
+  </ItemGroup>
+
+</Project>
