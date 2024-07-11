@@ -44,10 +44,12 @@
             copyToolStripMenuItem = new ToolStripMenuItem();
             pasteToolStripMenuItem = new ToolStripMenuItem();
             selectAllToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem3 = new ToolStripMenuItem();
-            findToolStripMenuItem = new ToolStripMenuItem();
             linkLabel1 = new LinkLabel();
             richTextBox1 = new RichTextBox();
+            textBox1 = new TextBox();
+            label2 = new Label();
+            button1 = new Button();
+            checkBox1 = new CheckBox();
             panel1.SuspendLayout();
             textboxContextMenu.SuspendLayout();
             SuspendLayout();
@@ -60,7 +62,7 @@
             encryptBtn.FlatStyle = FlatStyle.Flat;
             encryptBtn.Font = new Font("Segoe UI", 12F);
             encryptBtn.ForeColor = SystemColors.Control;
-            encryptBtn.Location = new Point(23, 398);
+            encryptBtn.Location = new Point(23, 415);
             encryptBtn.Name = "encryptBtn";
             encryptBtn.Size = new Size(112, 40);
             encryptBtn.TabIndex = 0;
@@ -76,7 +78,7 @@
             decryptBtn.FlatStyle = FlatStyle.Flat;
             decryptBtn.Font = new Font("Segoe UI", 12F);
             decryptBtn.ForeColor = SystemColors.Control;
-            decryptBtn.Location = new Point(141, 398);
+            decryptBtn.Location = new Point(141, 415);
             decryptBtn.Name = "decryptBtn";
             decryptBtn.Size = new Size(112, 40);
             decryptBtn.TabIndex = 1;
@@ -143,9 +145,9 @@
             textboxContextMenu.BackColor = Color.FromArgb(23, 23, 23);
             textboxContextMenu.DropShadowEnabled = false;
             textboxContextMenu.ImeMode = ImeMode.Disable;
-            textboxContextMenu.Items.AddRange(new ToolStripItem[] { undoToolStripMenuItem, redoToolStripMenuItem, toolStripMenuItem2, cutToolStripMenuItem, copyToolStripMenuItem, pasteToolStripMenuItem, selectAllToolStripMenuItem, toolStripMenuItem3, findToolStripMenuItem });
+            textboxContextMenu.Items.AddRange(new ToolStripItem[] { undoToolStripMenuItem, redoToolStripMenuItem, toolStripMenuItem2, cutToolStripMenuItem, copyToolStripMenuItem, pasteToolStripMenuItem, selectAllToolStripMenuItem });
             textboxContextMenu.Name = "contextMenuStrip1";
-            textboxContextMenu.Size = new Size(175, 202);
+            textboxContextMenu.Size = new Size(175, 158);
             // 
             // undoToolStripMenuItem
             // 
@@ -215,24 +217,6 @@
             selectAllToolStripMenuItem.Text = "Select All";
             selectAllToolStripMenuItem.Click += selectAllToolStripMenuItem_Click;
             // 
-            // toolStripMenuItem3
-            // 
-            toolStripMenuItem3.BackColor = Color.FromArgb(27, 27, 27);
-            toolStripMenuItem3.Enabled = false;
-            toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(174, 22);
-            toolStripMenuItem3.Text = " ";
-            // 
-            // findToolStripMenuItem
-            // 
-            findToolStripMenuItem.BackColor = Color.FromArgb(27, 27, 27);
-            findToolStripMenuItem.ForeColor = SystemColors.Control;
-            findToolStripMenuItem.Name = "findToolStripMenuItem";
-            findToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.F;
-            findToolStripMenuItem.Size = new Size(174, 22);
-            findToolStripMenuItem.Text = "Find";
-            findToolStripMenuItem.Click += findToolStripMenuItem_Click;
-            // 
             // linkLabel1
             // 
             linkLabel1.ActiveLinkColor = Color.FromArgb(35, 35, 185);
@@ -255,10 +239,63 @@
             richTextBox1.ContextMenuStrip = textboxContextMenu;
             richTextBox1.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             richTextBox1.ForeColor = SystemColors.Window;
-            richTextBox1.Location = new Point(12, 59);
-            richTextBox1.Size = new Size(488, 306);
+            richTextBox1.Location = new Point(12, 82);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(488, 327);
             richTextBox1.TabIndex = 3;
             richTextBox1.Text = "";
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.FromArgb(33, 33, 33);
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.ForeColor = SystemColors.Control;
+            textBox1.Location = new Point(58, 50);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(270, 23);
+            textBox1.TabIndex = 5;
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 13F);
+            label2.ForeColor = SystemColors.Control;
+            label2.Location = new Point(7, 49);
+            label2.Name = "label2";
+            label2.Size = new Size(50, 25);
+            label2.TabIndex = 6;
+            label2.Text = "Find:";
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(33, 33, 33);
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 10F);
+            button1.ForeColor = SystemColors.Control;
+            button1.Location = new Point(333, 49);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 27);
+            button1.TabIndex = 7;
+            button1.Text = "Clear";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Cursor = Cursors.Hand;
+            checkBox1.FlatAppearance.BorderSize = 0;
+            checkBox1.FlatStyle = FlatStyle.Flat;
+            checkBox1.ForeColor = SystemColors.Control;
+            checkBox1.Location = new Point(418, 54);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(85, 19);
+            checkBox1.TabIndex = 8;
+            checkBox1.Text = "Match Case";
+            checkBox1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -266,6 +303,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(23, 23, 23);
             ClientSize = new Size(512, 467);
+            Controls.Add(checkBox1);
+            Controls.Add(button1);
+            Controls.Add(label2);
+            Controls.Add(textBox1);
             Controls.Add(richTextBox1);
             Controls.Add(linkLabel1);
             Controls.Add(panel1);
@@ -276,7 +317,6 @@
             Name = "Form1";
             Text = "Phasmophobia Savefile Editor";
             FormClosing += Form1_FormClosing;
-            Load += Form1_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             textboxContextMenu.ResumeLayout(false);
@@ -301,7 +341,10 @@
         private ToolStripMenuItem undoToolStripMenuItem;
         private ToolStripMenuItem redoToolStripMenuItem;
         private LinkLabel linkLabel1;
-        private ToolStripMenuItem toolStripMenuItem3;
-        private ToolStripMenuItem findToolStripMenuItem;
+        public RichTextBox richTextBox1;
+        private TextBox textBox1;
+        private Label label2;
+        private Button button1;
+        private CheckBox checkBox1;
     }
 }

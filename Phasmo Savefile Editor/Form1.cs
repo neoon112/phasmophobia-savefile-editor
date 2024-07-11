@@ -8,16 +8,12 @@ namespace Phasmo_Savefile_Editor
 {
     public partial class Form1 : Form
     {
-        Find find = new Find();
-        public static RichTextBox richTextBox1 = new RichTextBox();
 
         public Form1()
         {
             InitializeComponent();
-
-            find.Hide();
-        // rounded border
-        var attribute = DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;
+            // rounded border
+            var attribute = DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;
             var preference = DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_ROUND;
             DwmSetWindowAttribute(this.Handle, attribute, ref preference, sizeof(uint));
 
@@ -267,18 +263,61 @@ namespace Phasmo_Savefile_Editor
             process!.WaitForExit();
         }
 
-        private void findToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Clear()
         {
-            if (find.ToString() == "Phasmo_Savefile_Editor.Find, Text: ")
-            {
-                find = new Find();
-            }
-            find.Show();
+            richTextBox1.SelectionStart = 0;
+            richTextBox1.SelectAll();
+            richTextBox1.SelectionBackColor = Color.FromArgb(33, 33, 33);
+            richTextBox1.SelectionColor = Color.White;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
+            Clear();
+            string[] words = textBox1.Text.Split(',');
+            foreach (string word in words)
+            {
+                int startindex = 0;
+                while (startindex < richTextBox1.TextLength)
+                {
+                    int wordstartIndex;
+                    if (checkBox1.Checked == true)
+                    {
+                        wordstartIndex = richTextBox1.Find(word, startindex, RichTextBoxFinds.MatchCase);
+                    }
+                    else
+                    {
+                        wordstartIndex = richTextBox1.Find(word, startindex, RichTextBoxFinds.None);
+                    }
+                    if (wordstartIndex != -1)
+                    {
+                        richTextBox1.ScrollToCaret();
+                        richTextBox1.SelectionStart = wordstartIndex;
+                        richTextBox1.SelectionLength = word.Length;
+                        richTextBox1.SelectionBackColor = Color.Yellow;
+                        richTextBox1.SelectionColor = Color.Black;
+                    }
+                    else
+                        break;
+                    startindex += wordstartIndex + word.Length;
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Clear();
+            string[] words = textBox1.Text.Split(',');
+            foreach (string word in words)
+            {
+                int startindex = 0;
+                while (startindex < richTextBox1.TextLength)
+                {
+                    int wordstartIndex = richTextBox1.Find(word, startindex, RichTextBoxFinds.None);
+                    break;
+                }
+            }
+            textBox1.Text = "";
         }
     }
 }
